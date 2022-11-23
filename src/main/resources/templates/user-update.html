@@ -9,6 +9,7 @@
     <form th:method="patch" th:action="@{/updateUser}" th:object="${user}">
         <label for="name">Enter name: </label>
         <input type="text" th:field="*{name}" id="name" th:value="${user.name}"/>
+        <input type="hidden" th:field="*{id}" id="id" th:value="${user.id}"/>
     <br/>
     <input type="submit" value="Save"/>
     </form>

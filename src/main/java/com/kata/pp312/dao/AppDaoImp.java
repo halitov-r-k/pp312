@@ -6,13 +6,15 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Repository
 public class AppDaoImp implements AppDao {
 
     @PersistenceContext
     private EntityManager entityManager;
-
+static private final Logger LOGGER = Logger.getLogger("AppDaoImpLogger");
     @Override
     public List<User> getUserList() {
         TypedQuery<User> query = entityManager.createQuery("FROM User", User.class);
@@ -26,6 +28,7 @@ public class AppDaoImp implements AppDao {
 
     @Override
     public void updateUser(User userNew) {
+        LOGGER.log(Level.INFO, "updateUser(), parameter userNew=" + userNew.toString());
         User user = getUser(userNew.getId());
         user.setName(userNew.getName());
         entityManager.merge(user);
