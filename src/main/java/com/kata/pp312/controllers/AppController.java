@@ -19,23 +19,22 @@ public class AppController {
     }
 
     @GetMapping()
-
-   public String openUsers(Model model){
-
+    public String openUsers(Model model) {
         List<User> userList = appService.getUserList();
-        LOGGER.log(Level.INFO, "openUsers(), parameter: userList.size()=" + userList.size() );
+        LOGGER.log(Level.INFO, "openUsers(), parameter: userList.size()=" + userList.size());
         model.addAttribute("userList", userList);
         return "users";
     }
+
     @RequestMapping("/addUser")
-    public String addUser(Model model){
+    public String addUser(Model model) {
         LOGGER.log(Level.INFO, "addUsers()");
         User user = new User();
         model.addAttribute("user", user);
         return "user-new";
     }
 
-    @RequestMapping("/saveUser")
+    @PostMapping()
     public String saveUser(@ModelAttribute("user") User user) {
         LOGGER.log(Level.INFO, "saveUsers(): parameter: user=" + user.toString());
         appService.saveUser(user);
@@ -51,8 +50,8 @@ public class AppController {
     }
 
     @PatchMapping("/updateUser")
-     public String updateUser(@ModelAttribute("user") User user) {
-        LOGGER.log(Level.INFO, "updateUsers() parameter: user=" + user.toString() );
+    public String updateUser(@ModelAttribute("user") User user) {
+        LOGGER.log(Level.INFO, "updateUsers() parameter: user=" + user.toString());
         appService.updateUser(user);
         return "redirect:/";
     }

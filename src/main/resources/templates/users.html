@@ -12,19 +12,19 @@
         <th>Name</th>
         <th colspan="2">Operations</th>
     </tr>
-    <tr  th:each="user:${userList}">
+    <tr th:each="user:${userList}">
         <td th:text="${user.getId()}"></td>
         <td th:text="${user.getName()}"></td>
         <td>
             <form th:method="get"
                   th:action="@{getUser/{id}(id=${user.getId()})}">
-            <input type="submit" value="Update"/>
+                <input type="submit" value="Update"/>
             </form>
         </td>
         <td>
             <form th:method="delete"
-            th:action="@{deleteUser/{id}(id=${user.getId()})}">
-            <input type="submit" value="Delete"/>
+                  th:action="@{deleteUser/{id}(id=${user.getId()})}">
+                <input type="submit" value="Delete"/>
             </form>
         </td>
     </tr>

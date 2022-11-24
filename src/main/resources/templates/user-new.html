@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>User creation</h1>
-    <form th:method="patch" th:action="@{/saveUser}" th:object="${user}">
+        <form th:method="POST" th:action="@{/}" th:object="${user}">
         <label for="name">Enter name: </label>
         <input type="text" th:field="*{name}" id="name" th:value="${user.name}"/>
     <br/>

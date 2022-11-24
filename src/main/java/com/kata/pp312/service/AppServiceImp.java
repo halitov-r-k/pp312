@@ -4,10 +4,11 @@ import com.kata.pp312.dao.AppDao;
 import com.kata.pp312.modeles.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 
 @Service
-public class AppServiceImp implements AppService{
+public class AppServiceImp implements AppService {
     private final AppDao appDao;
 
     public AppServiceImp(AppDao appDao) {
@@ -21,16 +22,24 @@ public class AppServiceImp implements AppService{
 
     @Transactional
     @Override
-    public void saveUser(User user) { appDao.saveUser(user); }
+    public void saveUser(User user) {
+        appDao.saveUser(user);
+    }
 
     @Override
-    public User getUser(Integer id) { return appDao.getUser(id); }
+    public User getUser(Integer id) {
+        return appDao.getUser(id);
+    }
 
     @Override
     @Transactional
-    public void updateUser(User user) {appDao.updateUser(user); }
+    public void updateUser(User user) {
+        appDao.updateUser(user);
+    }
 
     @Override
     @Transactional
-    public void deleteUser(Integer id) { appDao.deleteUser(id); }
+    public void deleteUser(Integer id) {
+        appDao.deleteUser(id);
+    }
 }
